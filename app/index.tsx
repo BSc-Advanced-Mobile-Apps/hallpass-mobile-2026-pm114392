@@ -9,7 +9,7 @@ export default function HomeScreen() {
       <Card className="w-full max-w-sm rounded-2xl p-6">
         <CardHeader className="items-center">
           <CardTitle variant="h1" className="text-brand-primary pb-2 text-center">
-            Hall Pass
+            Hall Pass Updated
           </CardTitle>
           <Text variant="muted" className="text-muted-foreground">
             {new Date().toLocaleTimeString()}
