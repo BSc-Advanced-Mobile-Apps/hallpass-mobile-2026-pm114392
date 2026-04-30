@@ -25,6 +25,7 @@ interface TaskDialogProps {
 export default function TaskDialogue({ onSave, task, setTask, setShowDialog, showDialog }: TaskDialogProps) {
   const [editedTitle, setEditedTitle] = React.useState(task.title);
   const [editedCategory, setEditedCategory] = React.useState(task.category);
+  const [editedDate, setEditedDate] = React.useState(task.date || '');
 
   const handleUpdateTitle = (title: string) => {
     setEditedTitle(title);
@@ -32,12 +33,16 @@ export default function TaskDialogue({ onSave, task, setTask, setShowDialog, sho
   const handleUpdateCategory = (category: string) => {
     setEditedCategory(category);
   };
+   const handleUpdateDate = (date: string) => {
+    setEditedDate(date);
+  };
 
   const handleSave = () => {
     const nextTask = {
       ...task,
       title: editedTitle,
       category: editedCategory,
+      Date: editedDate,
     };
 
     setTask(nextTask);
@@ -47,6 +52,7 @@ export default function TaskDialogue({ onSave, task, setTask, setShowDialog, sho
   }
   setEditedTitle('');
   setEditedCategory('');
+  setEditedDate('');
     setShowDialog(false);
   };
 
@@ -60,7 +66,7 @@ export default function TaskDialogue({ onSave, task, setTask, setShowDialog, sho
       <View className="gap-4">
         <Input
           value={editedTitle}
-          placeholder="Task title"
+          placeholder="Task Name"
           onChangeText={handleUpdateTitle}
         />
         <Input
@@ -68,9 +74,15 @@ export default function TaskDialogue({ onSave, task, setTask, setShowDialog, sho
           placeholder="Category"
           onChangeText={handleUpdateCategory}
         />
+        <Input
+          value={editedDate}
+          placeholder="Due Date"
+          onChangeText={handleUpdateDate}
+        />
       </View>
 
-      <DialogFooter> <Button
+      <DialogFooter> 
+        <Button
      className="border-brand-primary flex-1 rounded-3xl border bg-transparent"
      onPress={() => setShowDialog(false)}>
      <Text className="text-brand-primary">Cancel</Text>

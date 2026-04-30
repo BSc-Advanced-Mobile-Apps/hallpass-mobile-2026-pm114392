@@ -6,21 +6,22 @@ import { Dialog, DialogTrigger } from '@/components/ui/dialog';
 import { ITask } from '@/app';
 
 interface AddTaskProps {
-  onAdd: (title: string, category: string) => void;
+  onAdd: (title: string, category: string, date?: string) => void;
 }
 
 export default function AddTask({ onAdd }: AddTaskProps) {
   const [showDialog, setShowDialog] = React.useState(false);
    const [dialogKey, setDialogKey] = React.useState(0);
-  const [task, setTask] = React.useState<{ title: string; category: string }>({
+  const [task, setTask] = React.useState<{ title: '', category: ''; date: '' }>({
     title: '',
     category: '',
+    date: '',
   });
 
   const handleSave = (updatedTask: ITask) => {
     if (updatedTask.title.trim()) {
-      onAdd(updatedTask.title, updatedTask.category);
-      setTask({ title: '', category: '' });
+      onAdd(updatedTask.title, updatedTask.category, updatedTask.date);
+      setTask({ title: '', category: '', date: '' });
       setShowDialog(false);
     }
   };
@@ -46,7 +47,7 @@ export default function AddTask({ onAdd }: AddTaskProps) {
         key={dialogKey}
           task={{ id: 0, title: task.title, category: task.category, isChecked: false }}
           setTask={(newTask) => {
-            setTask({ title: newTask.title, category: newTask.category });
+            setTask({ title: newTask.title, category: newTask.category, date: newTask.date });
           }}
           showDialog={showDialog}
           setShowDialog={setShowDialog}

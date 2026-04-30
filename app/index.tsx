@@ -13,12 +13,15 @@ export interface ITask {
   title: string;
   category: string;
   isChecked: boolean;
+  date?: string;
 }
 
 export default function HomeScreen() {
  
   const [tasks, setTasks] = React.useState<ITask[]>([]);
   const [isLoading, setIsLoading] = React.useState(true);
+
+  console.log({ tasks })
 
   // Load tasks from storage when app starts
   React.useEffect(() => {
@@ -47,11 +50,11 @@ export default function HomeScreen() {
     }
   };
 
-  const handleAddTask = (title: string, category: string) => {
+  const handleAddTask = (title: string, category: string, date?: string) => {
     const nextId = tasks.length > 0 ? Math.max(...tasks.map((t) => t.id)) + 1 : 1;
     const updatedTasks = [
      ...tasks,
-     { id: nextId, title, category, isChecked: false },
+     { id: nextId, title, category, date, isChecked: false },
    ];
    setTasks(updatedTasks);
    saveTasks(updatedTasks);
