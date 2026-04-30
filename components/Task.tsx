@@ -1,7 +1,7 @@
 import * as React from "react";
 import { TouchableOpacity, View } from "react-native";
 
-import { TaskDialogue } from "@/components/TaskDialogue";
+import TaskDialogue from "@/components/TaskDialogue";
 import { Text } from '@/components/ui/text';
 import { Checkbox } from '@/components/ui/checkbox';
 import {

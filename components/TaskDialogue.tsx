@@ -21,7 +21,7 @@ interface TaskDialogProps {
   setShowDialog: (showDialog: boolean) => void;
   showDialog: boolean;
 }
-function TaskDialogue({ task, setTask, setShowDialog, showDialog }: TaskDialogProps) {
+export default function TaskDialogue({ task, setTask, setShowDialog, showDialog }: TaskDialogProps) {
   const [editedTitle, setEditedTitle] = React.useState(task.title);
   const [editedCategory, setEditedCategory] = React.useState(task.category);
 

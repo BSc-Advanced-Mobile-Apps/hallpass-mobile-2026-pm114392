@@ -34,7 +34,7 @@ export default function HomeScreen() {
 
 return (
   <View className="bg-background flex-1 items-center justify-center gap-5 p-6">
- {initialTasks.map((task) => (
+      {initialTasks.map((task) => (
         <Task key={task.id} task={task} />
       ))}
   </View>
