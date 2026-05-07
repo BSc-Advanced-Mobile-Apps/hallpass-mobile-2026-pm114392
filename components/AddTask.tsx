@@ -45,7 +45,7 @@ export default function AddTask({ onAdd }: AddTaskProps) {
 
         <TaskDialogue
         key={dialogKey}
-          task={{ id: 0, title: task.title, category: task.category, isChecked: false }}
+          task={{ id: 0, title: task.title, category: task.category, date: task.date, isChecked: false }}
           setTask={(newTask) => {
             setTask({ title: newTask.title, category: newTask.category, date: newTask.date });
           }}
