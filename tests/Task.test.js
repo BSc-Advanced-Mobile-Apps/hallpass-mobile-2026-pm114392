@@ -20,7 +20,7 @@ describe('Task', () => {
   });
   test("toggles completion status when pressed", async () => {
     const task = {
-      id: 1,
+      id: 2,
       title: "Test Task",
       category: "Test Category",
       isChecked: false,
@@ -38,7 +38,7 @@ describe('Task', () => {
   test('toggles from checked to unchecked when pressed', async () => {
     // Your code here...
     const task = {
-      id: 1,
+      id: 3,
       title: "Test Task",
       category: "Test Category",
       isChecked: true,
