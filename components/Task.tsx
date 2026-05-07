@@ -35,7 +35,7 @@ function Task({ task: initialTask, onUpdate }: TaskProps) {  // Added type
         <TouchableOpacity className="flex w-full flex-row" delayLongPress={500}>
           <View className="flex h-full w-24 px-8 py-5">
             <Checkbox
-            testID="checkbox"
+              testID="checkbox"
               className="border-foreground checked:bg-foreground"
               checked={task.isChecked}  // Fixed: Use task.isChecked
               onCheckedChange={handleSetChecked}  // Fixed: Use handler (receives checked value, but toggle logic works)
@@ -43,8 +43,8 @@ function Task({ task: initialTask, onUpdate }: TaskProps) {  // Added type
           </View>
           <View className="border-foreground-transparent flex h-full flex-1 gap-1 border-b py-4">
             <Text className="text-foreground text-xl">{task.title}</Text>  {/* Fixed: task.title */}
-            <Text className="text-foreground-transparent text-xl">{task.category}</Text>  {/* Fixed: task.category */}
-            <Text className="text-foreground-transparent text-xl">{task.date}</Text>
+            <Text className="text-foreground text-xl">{task.category}</Text>  {/* Fixed: task.category */}
+            <Text className="text-foreground text-xl">{task.date}</Text>
           </View>
         </TouchableOpacity>
       </DialogTrigger>

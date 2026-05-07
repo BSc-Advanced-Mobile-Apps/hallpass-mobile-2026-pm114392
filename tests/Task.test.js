@@ -35,4 +35,22 @@ describe('Task', () => {
 
     expect(checkbox).toBeChecked();
   });
+  test('toggles from checked to unchecked when pressed', async () => {
+    // Your code here...
+    const task = {
+      id: 1,
+      title: "Test Task",
+      category: "Test Category",
+      isChecked: false,
+    };
+
+    render(<Task task={task} />);
+
+    const checkbox = screen.not.toBeTestId("checkbox"); // Find the checkbox element
+
+    const user = userEvent.setup();
+    await user.press(checkbox);
+
+    expect(checkbox).toBeChecked();
+  });
 });
