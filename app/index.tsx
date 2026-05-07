@@ -12,8 +12,9 @@ export interface ITask {
   id: number;
   title: string;
   category: string;
-  isChecked: boolean;
   date?: string;
+  isChecked: boolean;
+  
 }
 
 export default function HomeScreen() {
