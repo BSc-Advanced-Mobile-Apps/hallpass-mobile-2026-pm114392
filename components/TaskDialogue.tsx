@@ -42,7 +42,7 @@ export default function TaskDialogue({ onSave, task, setTask, setShowDialog, sho
       ...task,
       title: editedTitle,
       category: editedCategory,
-      Date: editedDate,
+      date: editedDate,
     };
 
     setTask(nextTask);

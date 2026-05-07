@@ -25,6 +25,7 @@ export default function AddTask({ onAdd }: AddTaskProps) {
       setShowDialog(false);
     }
   };
+  
   // Reset dialog by changing key when it closes
   React.useEffect(() => {
     if (!showDialog) {
