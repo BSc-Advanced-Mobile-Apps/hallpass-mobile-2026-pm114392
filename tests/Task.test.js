@@ -41,16 +41,16 @@ describe('Task', () => {
       id: 1,
       title: "Test Task",
       category: "Test Category",
-      isChecked: false,
+      isChecked: true,
     };
 
     render(<Task task={task} />);
 
-    const checkbox = screen.not.toBeTestId("checkbox"); // Find the checkbox element
+    const checkbox = screen.getByTestId("checkbox"); // Find the checkbox element
 
     const user = userEvent.setup();
     await user.press(checkbox);
 
-    expect(checkbox).toBeChecked();
+    expect(checkbox).not.toBeChecked();
   });
 });
