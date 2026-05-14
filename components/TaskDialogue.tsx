@@ -74,11 +74,11 @@ export default function TaskDialogue({ onSave, task, setTask, setShowDialog, sho
           placeholder="Category"
           onChangeText={handleUpdateCategory}
         />
-        <Input
-          value={editedDate}
-          placeholder="Due Date"
-          onChangeText={handleUpdateDate}
-        />
+       <Input
+  value={editedDate}
+  placeholder="Due Date"
+  onChangeText={handleUpdateDate}
+/>
       </View>
 
       <DialogFooter> 
