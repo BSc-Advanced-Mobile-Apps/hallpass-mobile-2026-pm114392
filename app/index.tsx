@@ -69,6 +69,12 @@ export default function HomeScreen() {
    saveTasks(updatedTasks);
   };
 
+  const handleDeleteTask = (id: number) => {
+    const updatedTasks = tasks.filter((task) => task.id !== id);
+    setTasks(updatedTasks);
+    saveTasks(updatedTasks);
+  };
+
 return (
   <View className="flex-1 flex justify-between bg-background">
       <View className="flex flex-row justify-center">
@@ -92,7 +98,7 @@ return (
      </Text>
    ) : (
      tasks.map((task) => (
-       <Task key={task.id} task={task} onUpdate={handleTaskUpdate} />
+       <Task key={task.id} task={task} onUpdate={handleTaskUpdate} onDelete={handleDeleteTask} />
      ))
    )}
       </ScrollView>

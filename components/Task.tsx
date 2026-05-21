@@ -11,13 +11,15 @@ import {
 } from '@/components/ui/dialog';
 
 import { ITask } from '@/app';
+import { Button } from "./ui/button";
 
 export interface TaskProps {
   task: ITask;
   onUpdate?: (task: ITask) => void;
+  onDelete?: (id: number) => void;  // Added: Optional delete handler
 }
 
-function Task({ task: initialTask, onUpdate }: TaskProps) {  // Added type
+function Task({ task: initialTask, onUpdate, onDelete }: TaskProps) {  // Added type
   const [task, setTask] = React.useState(initialTask);
   const [showDialog, setShowDialog] = React.useState(false);
 
@@ -28,6 +30,12 @@ function Task({ task: initialTask, onUpdate }: TaskProps) {  // Added type
       onUpdate(updatedTask);
     }
   };
+
+  const handleDelete = () => {
+    if (onDelete) {
+      onDelete(task.id);
+    }
+  }
 
   return (
     <Dialog open={showDialog} onOpenChange={setShowDialog}>  {/* Controlled Dialog */}
@@ -46,17 +54,20 @@ function Task({ task: initialTask, onUpdate }: TaskProps) {  // Added type
             <Text className="text-foreground text-xl">{task.category}</Text>  {/* Fixed: task.category */}
             <Text className="text-foreground text-xl">{task.date}</Text>
           </View>
+
+          <Button onPress={handleDelete}>
+            <Text>Delete</Text>
+          </Button>
         </TouchableOpacity>
       </DialogTrigger>
 
-      <DialogContent>  {/* Added: Standard shadcn wrapper */}
+      
         <TaskDialogue
           task={task}
           setTask={setTask}
           setShowDialog={setShowDialog}
           showDialog={showDialog}
         />
-      </DialogContent>
     </Dialog>
   );
 }
