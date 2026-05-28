@@ -55,8 +55,8 @@ function Task({ task: initialTask, onUpdate, onDelete }: TaskProps) {  // Added 
             <Text className="text-foreground text-xl">{task.date}</Text>
           </View>
 
-          <Button onPress={handleDelete}>
-            <Text>Delete</Text>
+          <Button className="rounded-full bg-destructive hover:bg-destructive/90" onPress={handleDelete}>
+            <Text className="text-destructive-foreground">X</Text>
           </Button>
         </TouchableOpacity>
       </DialogTrigger>

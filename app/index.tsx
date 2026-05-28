@@ -18,7 +18,6 @@ export interface ITask {
 }
 
 export default function HomeScreen() {
- 
   const [tasks, setTasks] = React.useState<ITask[]>([]);
   const [isLoading, setIsLoading] = React.useState(true);
 
