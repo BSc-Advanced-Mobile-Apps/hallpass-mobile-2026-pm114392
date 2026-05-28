@@ -12,7 +12,7 @@ interface AddTaskProps {
 export default function AddTask({ onAdd }: AddTaskProps) {
   const [showDialog, setShowDialog] = React.useState(false);
    const [dialogKey, setDialogKey] = React.useState(0);
-  const [task, setTask] = React.useState<{ title: '', category: ''; date: '' }>({
+  const [task, setTask] = React.useState<{ title: string; category: string; date: string }>({
     title: '',
     category: '',
     date: '',
@@ -48,7 +48,7 @@ export default function AddTask({ onAdd }: AddTaskProps) {
         key={dialogKey}
           task={{ id: 0, title: task.title, category: task.category, date: task.date, isChecked: false }}
           setTask={(newTask) => {
-            setTask({ title: newTask.title, category: newTask.category, date: newTask.date });
+            setTask({ title: newTask.title ?? '', category: newTask.category ?? '', date: newTask.date ?? '' });
           }}
           showDialog={showDialog}
           setShowDialog={setShowDialog}

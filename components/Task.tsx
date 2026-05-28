@@ -67,6 +67,7 @@ function Task({ task: initialTask, onUpdate, onDelete }: TaskProps) {  // Added 
           setTask={setTask}
           setShowDialog={setShowDialog}
           showDialog={showDialog}
+          onUpdate={onUpdate}  // Added: Pass onUpdate to TaskDialogue for saving edits
         />
     </Dialog>
   );

@@ -21,6 +21,7 @@ interface TaskDialogProps {
   setTask: (task: ITask) => void;
   setShowDialog: (showDialog: boolean) => void;
   showDialog: boolean;
+  onUpdate?: (task: ITask) => void;
 }
 export default function TaskDialogue({ onSave, task, setTask, setShowDialog, showDialog }: TaskDialogProps) {
   const [editedTitle, setEditedTitle] = React.useState(task.title);
