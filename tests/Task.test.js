@@ -56,7 +56,7 @@ describe('Task', () => {
   });
   test('checks if dialogue box is not open', async () => {
     const task = {
-      id: 1,
+      id: 4,
       title: 'Test Task',
       category: 'Test Category',
       isChecked: true,
@@ -68,28 +68,49 @@ describe('Task', () => {
     expect(dialogueTitle).toBeNull();
   })
   test('displays the edit dialog when a task is pressed', async () => {
-    const task ={
-      id: 1,
-      title: 'Test Task',
-      category: 'Test Category',
-      isChecked: true,
-    };
-    render(
-      <>
+  const task ={
+    id: 5,
+    title: 'Test Task',
+    category: 'Test Category',
+    isChecked: true,
+  };
+  render(
+    <>
       <Task task={task}/>
       <PortalHost />
-      </>
-    );
+    </>
+  );
 
-    const taskTrigger = screen.getByTestId('task-trigger');
+  const taskTrigger = screen.getByTestId('task-trigger');
 
-    expect(screen.queryAllByTestId('dialogue-header')).toBeNull();
+  // Fixed: use queryByTestId (not queryAllByTestId)
+  expect(screen.queryByTestId('dialogue-header')).toBeNull();
 
-    const user = userEvent.setup();
-    await user.press(taskTrigger);
+  const user = userEvent.setup();
+  await user.press(taskTrigger);
 
-    const dialogueHeader = await screen.findAllByTestId('dialogue-header');
+  const dialogueHeader = await screen.findAllByTestId('dialogue-header');
 
-    expect(dialogueHeader).toBeTruthy();
-  })
+  // Fixed: check array length
+  expect(dialogueHeader).toHaveLength(1);
+});
+test('calls onDelete when delete button is pressed', async () => {
+  const mockOnDelete = jest.fn();
+  const task = {
+    id: 6,
+    title: 'Task to Delete',
+    category: 'Test Category',
+    isChecked: false,
+  };
+
+  render(<Task task={task} onDelete={mockOnDelete} />);
+
+  const user = userEvent.setup();
+  const deleteButton = screen.getByText('X');
+  
+  await user.press(deleteButton);
+
+  expect(mockOnDelete).toHaveBeenCalledWith(6);
+  expect(mockOnDelete).toHaveBeenCalledTimes(1);
+});
 });

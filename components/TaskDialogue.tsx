@@ -58,7 +58,7 @@ export default function TaskDialogue({ onSave, task, setTask, setShowDialog, onU
     if (onSave) {
       onSave(nextTask);
     }
-    
+
     setEditedTitle('');
     setEditedCategory('');
     setEditedDate('');
@@ -68,7 +68,7 @@ export default function TaskDialogue({ onSave, task, setTask, setShowDialog, onU
   return (
     <DialogContent className="max-w-5/6">
       <DialogHeader>
-        <DialogTitle>Edit Task</DialogTitle>
+        <DialogTitle testID="dialogue-header">Edit Task</DialogTitle>
         <DialogDescription>Make changes to your task details here.</DialogDescription>
       </DialogHeader>
 

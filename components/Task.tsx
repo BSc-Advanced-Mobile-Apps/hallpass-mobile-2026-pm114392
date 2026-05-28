@@ -40,7 +40,7 @@ function Task({ task: initialTask, onUpdate, onDelete }: TaskProps) {  // Added 
   return (
     <Dialog open={showDialog} onOpenChange={setShowDialog}>  {/* Controlled Dialog */}
       <DialogTrigger asChild>
-        <TouchableOpacity className="flex w-full flex-row" delayLongPress={500}>
+        <TouchableOpacity testID="task-trigger" className="flex w-full flex-row" delayLongPress={500}>
           <View className="flex h-full w-24 px-8 py-5">
             <Checkbox
               testID="checkbox"
